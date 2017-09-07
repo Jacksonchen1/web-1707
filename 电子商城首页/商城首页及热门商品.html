@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title> 
+		<link rel="stylesheet" href="index.css">
+	</head>
+	<body>
+		<div id="list1" class="list1">
+			<ul></ul>
+		</div>
+		<div id="list2" class="list2">
+			<h1>热销商品</h1>
+			<ul></ul>
+		</div>
+		<script src="myajax.js"></script>
+		<script>
+			var oDiv = document.querySelector('div');
+			var oUl1 = document.querySelector('#list1').querySelector('ul');
+			var oUl2 = document.querySelector('#list2').querySelector('ul');
+			myajax.get('http://h6.duchengjiu.top/shop/api_cat.php', {}, function(error, responseText){
+				var json = JSON.parse(responseText);
+				var data = json.data;
+				for (var i = 0; i < data.length; i++) {
+					var obj = data[i];
+					oUl1.innerHTML += '<li><a href="#">' + obj.cat_name + '</a></li>';
+				}
+			});
+			myajax.get('http://h6.duchengjiu.top/shop/api_goods.php', {}, function(error, responseText){
+				var json = JSON.parse(responseText);
+				var data = json.data;
+				for (var j = 0; j < data.length; j++) {
+					var obj = data[j];
+					oUl2.innerHTML += `<li><img src="${obj.goods_thumb}"><p>${obj.goods_name}</p><span>¥${obj.price}</span></li>`;
+				}
+			});
+		</script>
+	</body>
+</html>
