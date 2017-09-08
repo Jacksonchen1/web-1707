@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+			   width:200px;
+			   height: 80px;
+			   margin: 0 auto;
+			   margin-top: 40px;
+			}
+			.name{
+				width: 300px;
+				height: 40px;
+			}
+			.word{
+			   width: 300px;
+			   height: 40px;
+			   margin-top: 20px;
+			}
+			.pass{
+			   width: 300px;
+			   height: 40px;
+			   margin-top: 20px;
+			}
+			.btn{
+			  width: 300px;
+			  height: 50px;
+			  background-color: red;
+			  margin-top: 30px;
+			  border: 0;
+			  cursor: pointer;
+			  font-size: 15px;
+			  text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<input type="text" name="username" class="name" placeholder="请输入用户名">
+			<input type="password" name="password" class="word" placeholder="请输入密码">
+			<input type="password" name="password" class="pass" placeholder="确认密码">
+			<input type="submit" class="btn" value="注册">
+		</div>
+		<script src="myajax.js"></script>
+		<script>
+			var oUsername = document.querySelector('inpu[name=username]');
+			var oPassword = document.querySelector('input[name=password');
+			var oSubmit = document.querySelector('input[type=submit]');
+			oSubmit.onclick = function(){
+				myajax.post('http://h6.duchengjiu.top/shop/api_user.php',
+				{
+					status: 'register',
+					username: oUsername.value,
+					password: oPassword.value
+				},function(error,responseText){
+					var json = JSON.parse(responseText);
+					connsole.log(json);
+				})
+			}
+		</script>
+	</body>
+</html>

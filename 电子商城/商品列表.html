@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#cat{
+				width: 1000px;
+				height: 50px;
+				margin: 0 auto;
+				background-color: orange;
+				margin-top: 150px;
+			}
+			#cat li{
+				width: 80px;
+				height: 50px;
+				float: left;
+				padding: 10px;
+				list-style: none;
+				font-size: 17px;
+			}
+			#cat li a{
+				text-decoration: none;
+				color: white;
+			}
+			#cat li a:hover{
+				text-decoration: underline;
+				background-color: red;
+			}
+			#hot-goods{
+				width: 1000px;
+				height: 930px;
+				background-color: gainsboro;
+				margin: 0 auto;
+			}
+			#hot-goods li{
+				width: 250px;
+				height: 300px;
+				float: left;
+				list-style: none;
+				margin: 0 auto;
+				padding-top: 10px;
+			}
+			#hot-goods li img{
+				width: 200px;
+				height: 180px;
+			}
+			#hot-goods li p{
+				font-size: 14px;
+				color: black;
+				width: 200px;
+				height: 60px;
+				margin-top: 7px;
+				background-color: orange;
+				
+			}
+			#hot-goods li span{
+				float: right;
+				font-size: 15px;
+				color: deeppink;
+				margin-right: 45px;
+				margin-top: 10px;
+				
+			}
+			div{
+				width: 220px;
+				height: 50px;
+				margin-top: -130px;
+				background-color: deeppink;
+				margin-right: 20px;
+				float: right;
+			}
+			.register{
+				width: 60px;
+				height:50px;
+				font-size: 16px;
+				text-decoration: none;
+				color: white;
+				margin-left: 20px;
+				margin-top: 20px;
+				margin-right: 10px;
+			}
+			.register:hover{
+				text-decoration: underline;
+				background-color: orange;
+				color: gray;
+			}
+			.login{
+				width: 60px;
+				height:50px;
+				font-size: 16px;
+				text-decoration: none;
+				color: white;
+				margin-left: 20px;
+				margin-top: 20px;
+				margin-right: 10px;
+			}
+			.login:hover{
+				background-color: orange;
+				color: gray;
+				text-decoration: underline;
+			}
+			.cart{
+				width: 60px;
+				height:50px;
+				font-size: 16px;
+				text-decoration: none;
+				color: white;
+				margin-left: 20px;
+				margin-top: 20px;
+				margin-right: 10px;
+			}
+			.cart:hover{
+				background-color: orange;
+				color: gray;
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<a href="register.html" class="register">注册</a>
+			<a href="login.html" class="login">登录</a>
+			<a href="cart.html" class="cart">购物车</a>
+		</div>
+		<ul id="cat">
+		</ul>
+		<script src="myajax.js"></script>
+		<script>
+			var oCat = document.querySelector('ul');
+			myajax.get('http://h6.duchengjiu.top/shop/api_cat.php',{},function(error,reponseText){
+				var json = JSON.parse(reponseText);//返回的整个json对象
+				var data = json.data;//json对象当中的data是一个数组
+				for (var i = 0; i < data.length; i++) {
+					var obj = data[i];//数组里面的每一项是一个商品分类的对象
+					oCat.innerHTML += `<li><a href="商品列表.html?cat_id=${obj.cat_id}">` + obj.cat_name + `</a></li>`;
+				}
+				
+			});
+		</script>
+			<ul id="hot-goods">
+			</ul>
+		<script>
+			//name abc
+			//123
+			function getQueryString(name){
+				var search = location.search.substr(1);
+				var reg = new RegExp("(^|&)"+name+"=([^&]*)(&|$)");
+				var result = search.match(reg);
+				if(result === null) return null;
+				return decodeURIComponent(result[2]);
+			}
+			console.log(getQueryString('cat_id'));
+			var cat_id = getQueryString('cat_id');
+			var oGoods = document.querySelector('#hot-goods')
+			myajax.get('http://h6.duchengjiu.top/shop/api_goods.php?cat_id='+cat_id, {}, function(error, responseText){
+				var json = JSON.parse(responseText);
+				console.log(json);
+				var data = json.data;
+				for (var j = 0; j < data.length; j++) {
+					var obj = data[j];
+					oGoods.innerHTML += `<li>
+											<a href="goods.html"${obj.goods_id}</a>
+											<img src="${obj.goods_thumb}">
+											<p>${obj.goods_name}</p>
+											<span>¥${obj.price}</span>
+										</li>`;
+				}
+			});
+		</script>
+	</body>
+</html>
