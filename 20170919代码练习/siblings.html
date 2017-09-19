@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		    p {
+		      width: 40px;
+		      height: 40px;
+		      background-color: #ccc;
+		    }
+		    .cur {
+		      background-color: red;
+		    }
+	  	</style>
+	</head>
+	<body>
+	  <div id="box">
+	    <p></p>
+	    <p></p>
+	    <p></p>
+	    <p></p>
+	    <p></p>
+	    <p></p>
+	    <p></p>
+	    <p></p>
+	    <p></p>
+	    <p></p>
+	  </div>
+	  <script src="jquery-3.2.1.min.js"></script>
+	  <script>
+	  	$('p').mouseenter(function(){
+	  		$(this).addClass('cur').siblings().removeClass('cur');
+	  	})
+	  </script>
+	</body>
+</html>

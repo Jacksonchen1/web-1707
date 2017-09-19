@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li{
+				list-style: none;
+			}
+		     p {
+		      width: 40px;
+		      height: 40px;
+		      background-color: #ccc;
+		    }
+	 	</style>
+	</head>
+	<body>
+	  <div class="box">
+	    <ul>
+	      <li> <p></p> </li>
+	      <li> <p></p> </li>
+	      <li> <p></p> </li>
+	      <li> <p></p> </li>
+	      <li> <p></p> </li>
+	    </ul>
+	  </div>
+	  <script src="jquery-3.2.1.min.js"></script>
+	  <script>
+//	  	$('.box').children('p').css('background-color','red');
+//	  	$('.box').find('p').css('background-color','red');
+		console.log($('.box').find('*').length);//*是通配符，表示匹配的所有元素
+		$('.box').find('*').eq(2).css('background-color','red');
+	  </script>
+	</body>
+</html>

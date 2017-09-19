@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		    * {
+		      margin: 0;
+		      padding: 0;
+		    }
+		    table,td{
+		      border: 1px solid #000;
+		    }
+		    td {
+		      width: 120px;
+		      height: 40px;
+		    }
+	  	</style>
+	</head>
+	<body>
+	  <table>
+	    <tr>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	      <td></td>
+	    </tr>
+	  </table>
+	  <script src="jquery-3.2.1.min.js"></script>
+	  <script>
+//	  	$("tr:even").each(function(){
+//	  		$(this).css("background-color","red");
+//	  	});
+//	  	$("td:even").each(function(){
+//	  		$(this).css('background-color','red');
+//	  	});
+//	  	$('tr').each(function(){
+//	  		$(this).children(":even").css('backgroundColor','red');
+//	  	});
+	  	//get() 相当于中路号访问，返回的是dom对象
+//	  	$('tr').get(1).css('backgroundColor','red');
+	  	$('tr').get(1).style.backgroundColor = 'red';
+	  </script>
+	</body>
+</html>

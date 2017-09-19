@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		    div {
+		      width: 80px;
+		      height: 80px;
+		      position: absolute;
+		      left: 100px;
+		      top: 100px;
+		      background-color: blue;
+		    }
+	  	</style>
+	</head>
+	<body>
+	  <div></div>
+	  <div></div>
+	  <div></div>
+	  <script src="jquery-3.2.1.min.js"></script>
+	  <script>
+	  	$('div:eq(0)').delay(800).animate({left:600},1000);
+	  	$('div:eq(1)').delay(1000).animate({top:600},1000);
+	  	$('div:eq(2)').delay(1200).animate({left:300,top:300},1000)
+	  </script>
+	</body>
+</html>
