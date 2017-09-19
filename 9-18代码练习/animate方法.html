@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		    p {
+		      position: absolute;
+		      width: 100px;
+		      height: 100px;
+		      background-color: orange;
+		    }
+		    .box2 {
+		      top: 150px;
+		    }
+		</style>
+	</head>
+	<body>
+		<p class="box1"></p>
+		<p class="box2"></p>
+		<script src="../jquery-3.2.1.min.js"></script>
+		<script>
+//			$('p').animate({"left":1000},2000,function(){
+//				$(this).css('background-color','red')
+//			})
+//			//都是box1在动，所以要排队：先横后竖
+//			$('.box1').animate({"left":1000},2000);
+//			$('.box1').animate({"top":400},2000);
+			
+			//斜着跑
+			$('.box1').animate({"left":1000,"top":400,"opacity":0.5},2000);
+			
+		</script>
+	</body>
+</html>
